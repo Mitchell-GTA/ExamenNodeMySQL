@@ -1,0 +1,65 @@
+<%- contentFor('head')%>
+<%- include('./../css'); %>
+<%- contentFor('body')%>
+
+<body id="page-top" class="sidebar-toggled">
+    <div class="wrapper">
+        <%- include('./../top-bar'); %>
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-7">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Nombre</th>
+                                <th>Salario</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(data) { %>
+                                <% for (let i = 0; i < data.length; i++) { %>
+                                    <tr>
+                                        <td><%= i+1 %></td>
+                                        <td><%= data[i].name %></td>
+                                        <td><%= data[i].salary %></td>
+                                        <td>
+                                            <a href="jobs/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal" action="jobs/add" method="post">
+                                <fieldset>
+                                <div class="form-group"> 
+                                    <div class="">
+                                        <input  name="name" type="text" placeholder="Nombre" class="form-control input-md">  
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <input name="salary" type="text" placeholder="Salario" class="form-control input-md"> 
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<%- contentFor('scripts')%>
+<%- include('./../scripts'); %>
