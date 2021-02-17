@@ -33,6 +33,10 @@ const genders = require('./routes/genders.route');
 app.use('/genders', genders);
 
 
+const employees = require('./routes/employees.route');
+app.use('/employees', employees);
+
+
 app.get('/test', function(req, res) {
     res.status(200).send({status:"success",message:"Welcome To Testing API"})
 });
